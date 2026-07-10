@@ -1,50 +1,56 @@
 import "./App.css";
+import { books } from "./data/books";
+
+import { Navbar } from "./components/Navbar";
+import { Hero } from "./components/Hero";
+import { SearchBox } from "./components/SearchBox";
+import { Categories } from "./components/Categories";
+import { BookCard } from "./components/BookCard";
+import { useState } from "react";
+
+
+import { Footer } from "./components/Footer";
+
 
 function App() {
+
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("All");
+
+  const  filteredBooks = books.filter((book) => 
+    book.title.toLowerCase().includes(search.toLowerCase())
+  );
+  
+
   return (
-    <>
-    <nav className="navbar">
-      <h2>📚 BookVerse</h2>
-      <ul className="nav-links">
-        <li>Home</li>
-        <li>Books</li>
-        <li>Cart</li>
-        <li>Login</li>
-      </ul>
-    </nav>
+    <div>
+      <Navbar />
+      <Hero />
+      <SearchBox 
+        search={search}
+        setSearch={setSearch}
+      />
+      <Categories />
 
-    <div className="hero">
-      <h1>Welcome to BookVerse</h1>
-      <p>Discover, Explore and Buy Your Favorite Books</p>
+      <section className="featured-books">
+        <h2>Featured Books</h2>
 
-      <button>Shop Now</button>
+        <div className="book-container">
+          {filteredBooks.map((book) => (
+            <BookCard 
+               key={book.id}
+               title={book.title}
+               author={book.author}
+               price={book.price}
+               rating={book.rating}
+            
+            />
+          ))}
+        </div>
+      </section>
+
+      <Footer />
     </div>
-
-    <section className="books-section">
-     <h2>Featured Books</h2>
-
-     <div className="book-container">
-        <div className="book-card">
-          <img src="https://via.placeholder.com/150x200" alt="Book"/>
-
-          <h3>React Basic</h3>
-            <p>₹499</p>
-          <button>Add to Cart</button>
-        </div>
-        
-        <div className="book-card">
-           <img src="https://via.placeholder.com/150x200" alt="Book"/>
-           <h3>JavaScript</h3>
-        </div>
-        
-
-
-      </div>
-    </section>
-
-
-
-    </>
   );
 }
 
