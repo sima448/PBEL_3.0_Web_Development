@@ -1,20 +1,41 @@
-function BookCard({ title, author, price, rating }) {
-    return (
-      <div className="book-card">
-        <div className="book-image">
-            📚
-        </div>
-        <h3>{title}</h3>
-        <p className="author">{author}</p>
-        <p>{price}</p>
-        <p className="rating">{rating}</p>
+import { Link } from "react-router-dom";
 
-        <div className="card-buttons">
-          <button>Add To Cart</button>
-          <button>View Details</button>
-        </div>
+function BookCard({
+  id,
+  title,
+  author,
+  price,
+  oldPrice,
+  discount,
+  rating,
+  image,
+  addToCart,
+  description,
+}) 
+{
+  return (
+    <div className="book-card">
+      <img src={image} alt={title} className="book-image" />
+
+      <h3>{title}</h3>
+      <p className="author">{author}</p>
+
+
+      <div className="price-section">
+      <span className="price">{price}</span>
+      <span className="old-price">{oldPrice}</span>
+      <span className="discount">{discount}</span>
       </div>
-    );
+      <p className="rating">{rating}</p>
+
+      <div className="card-buttons">
+        <button onClick={addToCart}>Add To Cart</button>
+        <Link to={`/book/${id}`}>
+          <button>View Details</button>
+        </Link>
+      </div>
+    </div>
+  );
 }
 
 export { BookCard };

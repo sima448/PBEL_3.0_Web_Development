@@ -1,11 +1,12 @@
 function Hero() {
     return (
-        <section className="hero">
-        <h1>Online Book Store</h1>
-        <p>Discover, Explore and Buy Your Favorite Books</p>
+      <section className="hero">
+        <h1>Discover Your Next Favorite Book</h1>
+        <p>
+          Explore Programming, Fiction, Science and History Books at One Place
+        </p>
         <button>Shop Now</button>
       </section>
-
     );
 }
 
