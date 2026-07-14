@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 
 function BookCard({
   id,
@@ -13,6 +14,24 @@ function BookCard({
   description,
 }) 
 {
+
+  const navigate = useNavigate();
+
+  const handleAddToCart = () => {
+    const user = JSON.parse(localStorage.getItem("currentUser"));
+
+    console.log("User:", user);
+
+    if (!user) {
+      navigate("/login");
+      return;
+    }
+
+    addToCart();
+  };
+
+
+
   return (
     <div className="book-card">
       <img src={image} alt={title} className="book-image" />
@@ -29,7 +48,7 @@ function BookCard({
       <p className="rating">{rating}</p>
 
       <div className="card-buttons">
-        <button onClick={addToCart}>Add To Cart</button>
+        <button onClick={handleAddToCart}>Add To Cart</button>
         <Link to={`/book/${id}`}>
           <button>View Details</button>
         </Link>

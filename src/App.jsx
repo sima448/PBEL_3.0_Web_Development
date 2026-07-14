@@ -11,7 +11,9 @@ import { Cart } from "./pages/Cart";
 import { Login } from "./pages/Login";
 import { BookDetails } from "./pages/BookDetails";
 import { About } from "./pages/About";
-
+import { Signup } from "./pages/Signup";
+import { ForgotPassword } from "./pages/ForgotPassword";
+import { Profile } from "./pages/Profile";
 
 
 import { Footer } from "./components/Footer";
@@ -19,6 +21,8 @@ import { Footer } from "./components/Footer";
 
 function App() {
    
+
+
   const [toast, setToast] = useState("");
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
@@ -66,54 +70,47 @@ function App() {
   return (
     <div>
       <Navbar cartCount={cart.length} />
-       
-       {toast && (
-        <div className="toast">{toast}</div>
-       )}
 
-
+      {toast && <div className="toast">{toast}</div>}
 
       <Routes>
-        <Route 
-        path="/" 
-        element={ 
-          <Home 
-           search={search}
-           setSearch={setSearch}
-           category={category}
-           setCategory={setCategory}
-           filteredBooks={filteredBooks}
-           addToCart={addToCart}
-          />
+        <Route
+          path="/"
+          element={
+            <Home
+              search={search}
+              setSearch={setSearch}
+              category={category}
+              setCategory={setCategory}
+              filteredBooks={filteredBooks}
+              addToCart={addToCart}
+            />
           }
-          />
-
-
-        <Route path="/books" element={<Books />} />
-
-
-        <Route 
-        path="/cart" 
-        element={
-        <Cart 
-        cart={cart} 
-        removeFromCart={removeFromCart}
-        totalPrice={totalPrice}
-        
-        />
-        }
         />
 
+        <Route path="/books" element={<Books addToCart={addToCart} />} />
 
-        <Route path="/login" element={< Login />} />
-        <Route path="/book/:id" element={<BookDetails
-        addToCart={addToCart} />} />
-        <Route path="/about" element={<About />}/>
+        <Route
+          path="/cart"
+          element={
+            <Cart
+              cart={cart}
+              removeFromCart={removeFromCart}
+              totalPrice={totalPrice}
+            />
+          }
+        />
 
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/book/:id"
+          element={<BookDetails addToCart={addToCart} />}
+        />
+        <Route path="/about" element={<About />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
-
-    
-      
 
       <Footer />
     </div>

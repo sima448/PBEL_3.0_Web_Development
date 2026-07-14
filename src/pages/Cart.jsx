@@ -1,34 +1,44 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Cart({ cart, removeFromCart, totalPrice }) {
+
+  const navigate = useNavigate();
+
+  const handlePlaceOrder = () => {
+    alert("🎉 Order Placed Successfully");
+
+    navigate("/");
+  };
+
+
   return (
     <div className="cart-page">
       <div className="cart-left">
         <h1>Shopping Cart</h1>
-        
+
         {cart.length === 0 ? (
           <div className="empty-cart-container">
-          <h2 className="empty-cart"> 🛒 Your cart is empty!</h2>
+            <h2 className="empty-cart"> 🛒 Your cart is empty!</h2>
 
-          <Link to="/">
-            <button className="shop-btn">Shop Now</button>
-          </Link>
+            <Link to="/">
+              <button className="shop-btn">Shop Now</button>
+            </Link>
           </div>
         ) : (
           cart.map((book, index) => (
             <div key={index} className="cart-item">
-              <Link to={`/book/${book.id}`} className="cart-link"> 
-              <img src={book.image} alt={book.title} className="cart-image" />
+              <Link to={`/book/${book.id}`} className="cart-link">
+                <img src={book.image} alt={book.title} className="cart-image" />
 
-              <div className="cart-details">
-                <h3>{book.title}</h3>
-                <p>{book.author}</p>
-                <p>{book.price}</p>
-                <p>{book.rating}</p>
-              </div>
-               </Link>
+                <div className="cart-details">
+                  <h3>{book.title}</h3>
+                  <p>{book.author}</p>
+                  <p>{book.price}</p>
+                  <p>{book.rating}</p>
+                </div>
+              </Link>
 
-                <button onClick={() => removeFromCart(index)}>Remove</button>
+              <button onClick={() => removeFromCart(index)}>Remove</button>
             </div>
           ))
         )}
@@ -40,14 +50,14 @@ function Cart({ cart, removeFromCart, totalPrice }) {
 
           <hr />
 
-          <div class="price-row">
+          <div className="price-row">
             <span>Total Items: </span>
             <span>{cart.length}</span>
           </div>
 
           <div>
             <h3>Total: ₹{totalPrice}</h3>
-            <button>Place Order</button>
+            <button onClick={handlePlaceOrder}>Place Order</button>
           </div>
         </div>
       )}

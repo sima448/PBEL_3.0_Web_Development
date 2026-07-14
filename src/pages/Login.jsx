@@ -1,5 +1,105 @@
+import { FcGoogle } from "react-icons/fc";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+
 function Login() {
-  return <h1>Login Page</h1>;
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const [showPassword, setShowPassword] = useState(false);
+
+
+  const handleLogin = () => {
+    if (!email || !password) {
+      setError("Please fill all fields");
+      return;
+    }
+
+    const users = JSON.parse
+     (localStorage.getItem("users")
+    ) || [];
+    if (users.length === 0) {
+      setError("No account found. Please Sign Up first.");
+      return;
+    }
+
+
+    const user = users.find(
+      (u) => u.email === email && u.password === password,
+    );
+    if (!user) {
+      setError("Invalid Email or Password");
+      return;
+    }
+
+    setError("");
+
+    localStorage.setItem("currentUser", JSON.stringify(user));
+
+    alert("Login Successful");
+
+    setEmail("");
+    setPassword("");
+
+    navigate("/");
+  };
+
+
+  return (
+    <div className="auth-page">
+      <div className="auth-card">
+        <h1>Login</h1>
+
+        {error && <p className="error-msg">{error}</p>}
+
+        <input
+          type="email"
+          placeholder="Enter Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <div className="password-box">
+          <input
+            type={showPassword ? "text" : "password"}
+            placeholder="Enter Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          <span
+            className="eye-icon"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
+          </span>
+        </div>
+
+        <button onClick={handleLogin}>Login</button>
+
+        <p
+          className="forgot-password"
+           onClick={() => navigate("/forgot-password")}
+          >
+          Forgot Password?
+        </p>
+
+        <button className="google-btn">
+          <FcGoogle size={22} />
+          Continue with Google
+        </button>
+
+        <p>
+          Don't have an account?
+          <Link to="/signup"> Sign Up </Link>
+        </p>
+      </div>
+    </div>
+  );
 }
 
 export { Login };
