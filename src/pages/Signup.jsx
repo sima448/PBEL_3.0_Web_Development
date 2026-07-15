@@ -11,7 +11,7 @@ function Signup() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const navigate = useNavigate();
 
-   
+   /*
     const handleSignup = () => {
       if (!name || !email || !password || !confirmPassword) {
         alert("Please fill all fields");
@@ -47,6 +47,46 @@ function Signup() {
       alert("Account Created Successfully");
 
       navigate("/login");
+    };*/
+
+    const handleSignup = async () => {
+      if (!name || !email || !password || !confirmPassword) {
+        alert("Please fill all fields");
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match");
+        return;
+      }
+
+      try {
+        const response = await fetch("http://localhost:5000/signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            password,
+          }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          alert(data.message);
+          return;
+        }
+
+        alert("Account Created Successfully ✅");
+
+        navigate("/login");
+      } catch (error) {
+        console.log(error);
+        alert("Server Error");
+      }
     };
 
     

@@ -2,6 +2,8 @@ import { Hero } from "../components/Hero";
 import { SearchBox } from "../components/SearchBox";
 import { Categories } from "../components/Categories";
 import { BookCard } from "../components/BookCard";
+//import { useEffect, useState } from "react";
+
 
 
 
@@ -13,6 +15,7 @@ function Home({
   filteredBooks,
   addToCart,
 }) {
+
     return (
       <>
         <Hero />
@@ -21,7 +24,9 @@ function Home({
 
         <section className="featured-books">
           <h2>Featured Books</h2>
-          <p className="result-count">{filteredBooks.length} Books Found</p>
+          <p className="result-count">
+            {filteredBooks.length} Books Found
+          </p>{" "}
           {filteredBooks.length === 0 ? (
             <h3 className="no-books">😔 No books found Try another search</h3>
           ) : (
@@ -48,3 +53,4 @@ function Home({
 }
 
 export { Home }
+

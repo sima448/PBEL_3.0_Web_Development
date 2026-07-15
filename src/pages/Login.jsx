@@ -12,7 +12,7 @@ function Login() {
 
   const [showPassword, setShowPassword] = useState(false);
 
-
+  /*
   const handleLogin = () => {
     if (!email || !password) {
       setError("Please fill all fields");
@@ -47,7 +47,47 @@ function Login() {
 
     navigate("/");
   };
+  */
 
+  const handleLogin = async () => {
+    if (!email || !password) {
+      setError("Please fill all fields");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.message);
+        return;
+      }
+
+      localStorage.setItem("token", data.token);
+
+      localStorage.setItem("currentUser", JSON.stringify(data.user));
+
+      setError("");
+
+      alert("Login Successful ✅");
+
+      navigate("/profile");
+    } catch (error) {
+      console.log(error);
+      setError("Server Error");
+    }
+  };
 
   return (
     <div className="auth-page">

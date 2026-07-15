@@ -4,12 +4,40 @@ function Cart({ cart, removeFromCart, totalPrice }) {
 
   const navigate = useNavigate();
 
-  const handlePlaceOrder = () => {
-    alert("🎉 Order Placed Successfully");
+  const handlePlaceOrder = async () => {
+    try {
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-    navigate("/");
+      const response = await fetch("http://localhost:5000/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userEmail: currentUser.email,
+          books: cart,
+          totalPrice,
+          address: currentUser.address,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        alert(data.message);
+        return;
+      }
+      alert("🎉 Order Placed Successfully");
+
+      localStorage.removeItem("cart");
+
+      navigate("/");
+
+    } catch (error) {
+      console.log(error);
+      alert("Something went wrong");
+    }
   };
-
 
   return (
     <div className="cart-page">

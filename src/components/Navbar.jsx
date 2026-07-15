@@ -40,7 +40,11 @@ function Navbar({ cartCount }) {
             <li>
               <Link to="/profile">👤 Profile</Link>
             </li>
-            
+
+            <li>
+              <Link to="/orders">📦 My Orders</Link>
+            </li>
+
             <li className="welcome-user">👋 {user.name}</li>
 
             <li>

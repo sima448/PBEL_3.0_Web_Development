@@ -14,6 +14,8 @@ import { About } from "./pages/About";
 import { Signup } from "./pages/Signup";
 import { ForgotPassword } from "./pages/ForgotPassword";
 import { Profile } from "./pages/Profile";
+import { MyOrders } from "./pages/MyOrders";
+import { OrderDetails } from "./pages/OrderDetails";
 
 
 import { Footer } from "./components/Footer";
@@ -110,6 +112,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/orders" element={<MyOrders />} />
+        <Route path="/order/:id" element={<OrderDetails />} />
       </Routes>
 
       <Footer />

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { books } from "../data/books";
 import { BookCard } from "../components/BookCard";
 import { SearchBox } from "../components/SearchBox";
