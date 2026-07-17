@@ -1,48 +1,3 @@
-/*import { Link } from "react-router-dom";
-
-function MyOrders() {
-  const orders = [
-    {
-      id: 1,
-      title: "React Basics",
-      price: 500,
-      date: "15 Jul 2026",
-      status: "Delivered",
-      payment: "UPI",
-    },
-  ];
-
-  return (
-    <div className="orders-page">
-      <h1>📦 My Orders</h1>
-
-      {orders.map((order) => (
-        <div className="order-card" key={order.id}>
-          <div className="order-left">
-            <h3>📦 {order.title}</h3>
-
-            <p>📅 Ordered On: {order.date}</p>
-
-            <p>💳 Payment: {order.payment}</p>
-
-            <p className="order-status">🚚 {order.status} ✅</p>
-          </div>
-
-          <div className="order-right">
-            <h2 className="order-price">₹{order.price}</h2>
-
-            <Link to={`/order/${order.id}`}>
-              <button>Order Details</button>
-            </Link>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-export { MyOrders };
-*/
 
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -94,16 +49,18 @@ function MyOrders() {
           <div className="order-right">
             <h2 className="order-price">₹{order.totalPrice}</h2>
 
-            <Link to={`/order/${order._id}`}>
-              <button>Order Details</button>
-            </Link>
+            <div className="order-buttons">
+              <Link to={`/order/${order._id}`}>
+                <button className="details-btn">Order Details</button>
+              </Link>
 
-            <button
-              className="cancel-btn"
-              onClick={() => handleCancelOrder(order._id)}
-            >
-              Cancel Order
-            </button>
+              <button
+                className="cancel-btn"
+                onClick={() => handleCancelOrder(order._id)}
+              >
+                Cancel Order
+              </button>
+            </div>
           </div>
         </div>
       ))}

@@ -11,44 +11,7 @@ function Signup() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const navigate = useNavigate();
 
-   /*
-    const handleSignup = () => {
-      if (!name || !email || !password || !confirmPassword) {
-        alert("Please fill all fields");
-        return;
-      }
-
-      if (password !== confirmPassword) {
-        alert("Passwords do not match");
-        return;
-      }
-      
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    
-
-    const existingUser = users.find(
-        (user) => user.email === email
-        );
-
-        if (existingUser) {
-          alert("Email already registered");
-          return;
-        }
-
-        users.push({
-          name,
-          email,
-          password
-        });
-
-        localStorage.setItem("users", JSON.stringify(users));
-
-
-      alert("Account Created Successfully");
-
-      navigate("/login");
-    };*/
-
+   
     const handleSignup = async () => {
       if (!name || !email || !password || !confirmPassword) {
         alert("Please fill all fields");

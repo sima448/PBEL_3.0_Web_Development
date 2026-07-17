@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 
-function Cart({ cart, removeFromCart, totalPrice }) {
-
+function Cart({ cart, setCart, removeFromCart, totalPrice }) {
   const navigate = useNavigate();
 
   const handlePlaceOrder = async () => {
@@ -31,8 +30,9 @@ function Cart({ cart, removeFromCart, totalPrice }) {
 
       localStorage.removeItem("cart");
 
-      navigate("/");
+      setCart([]);
 
+      navigate("/");
     } catch (error) {
       console.log(error);
       alert("Something went wrong");

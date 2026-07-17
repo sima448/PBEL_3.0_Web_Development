@@ -12,42 +12,7 @@ function Login() {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  /*
-  const handleLogin = () => {
-    if (!email || !password) {
-      setError("Please fill all fields");
-      return;
-    }
-
-    const users = JSON.parse
-     (localStorage.getItem("users")
-    ) || [];
-    if (users.length === 0) {
-      setError("No account found. Please Sign Up first.");
-      return;
-    }
-
-
-    const user = users.find(
-      (u) => u.email === email && u.password === password,
-    );
-    if (!user) {
-      setError("Invalid Email or Password");
-      return;
-    }
-
-    setError("");
-
-    localStorage.setItem("currentUser", JSON.stringify(user));
-
-    alert("Login Successful");
-
-    setEmail("");
-    setPassword("");
-
-    navigate("/");
-  };
-  */
+  
 
   const handleLogin = async () => {
     if (!email || !password) {
@@ -123,12 +88,15 @@ function Login() {
 
         <p
           className="forgot-password"
-           onClick={() => navigate("/forgot-password")}
-          >
+          onClick={() => navigate("/forgot-password")}
+        >
           Forgot Password?
         </p>
 
-        <button className="google-btn">
+        <button
+          className="google-btn"
+          onClick={() => alert("Google Login Coming Soon 🚀")}
+        >
           <FcGoogle size={22} />
           Continue with Google
         </button>

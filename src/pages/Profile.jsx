@@ -9,15 +9,20 @@ function Profile() {
   const [editing, setEditing] = useState(false);
 
   const [name, setName] = useState(user?.name || "");
-  const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState(user?.phone || "");
+  const [address, setAddress] = useState(user?.address || "");
 
   const handleLogout = () => {
     localStorage.removeItem("currentUser");
     navigate("/login");
   };
 
-  const handleSave = () => {
+  const saveProfile = () => {
+    if (!/^[0-9]{10}$/.test(phone)) {
+      alert("Enter a valid 10 digit phone number");
+      return;
+    }
+
     const updatedUser = {
       ...user,
       name,
@@ -31,10 +36,6 @@ function Profile() {
 
     alert("Profile Updated Successfully");
   };
-
-  if (!user) {
-    return <h2>Please Login First</h2>;
-  }
 
   return (
     <div className="profile-page">
@@ -54,6 +55,7 @@ function Profile() {
             />
 
             <input
+              type="text"
               placeholder="Phone Number"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
@@ -63,11 +65,9 @@ function Profile() {
               placeholder="Address"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
-            />
+            ></textarea>
 
-            <button className="save-btn" onClick={handleSave}>
-              Save Changes
-            </button>
+            <button className="save-btn" onClick={saveProfile}>Save Profile</button>
           </>
         ) : (
           <>

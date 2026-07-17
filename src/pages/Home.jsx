@@ -13,43 +13,51 @@ function Home({
   category,
   setCategory,
   filteredBooks,
+  suggestions,
   addToCart,
+  addToWishlist,
 }) {
+  return (
+    <>
+      <Hero />
+      <SearchBox
+        search={search}
+        setSearch={setSearch}
+        suggestions={filteredBooks}
+      />
+      <Categories
+        category={category}
+        setCategory={setCategory}
+        setSearch={setSearch}
+      />
 
-    return (
-      <>
-        <Hero />
-        <SearchBox search={search} setSearch={setSearch} />
-        <Categories category={category} setCategory={setCategory} />
-
-        <section className="featured-books">
-          <h2>Featured Books</h2>
-          <p className="result-count">
-            {filteredBooks.length} Books Found
-          </p>{" "}
-          {filteredBooks.length === 0 ? (
-            <h3 className="no-books">😔 No books found Try another search</h3>
-          ) : (
-            <div className="book-container">
-              {filteredBooks.map((book) => (
-                <BookCard
-                  key={book.id}
-                  id={book.id}
-                  title={book.title}
-                  author={book.author}
-                  price={book.price}
-                  oldPrice={book.oldPrice}
-                  discount={book.discount}
-                  rating={book.rating}
-                  image={book.image}
-                  addToCart={() => addToCart(book)}
-                />
-              ))}
-            </div>
-          )}
-        </section>
-      </>
-    );
+      <section className="featured-books">
+        <h2>Featured Books</h2>
+        <p className="result-count">{filteredBooks.length} Books Found</p>{" "}
+        {filteredBooks.length === 0 ? (
+          <h3 className="no-books">😔 No books found Try another search</h3>
+        ) : (
+          <div className="book-container">
+            {filteredBooks.map((book) => (
+              <BookCard
+                key={book.id}
+                id={book.id}
+                title={book.title}
+                author={book.author}
+                price={book.price}
+                oldPrice={book.oldPrice}
+                discount={book.discount}
+                rating={book.rating}
+                image={book.image}
+                addToCart={() => addToCart(book)}
+                addToWishlist={addToWishlist}
+              />
+            ))}
+          </div>
+        )}
+      </section>
+    </>
+  );
 }
 
 export { Home }

@@ -1,11 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 
-function Navbar({ cartCount }) {
+function Navbar({ cartCount, wishlistCount }) {
   const navigate = useNavigate();
 
   const user = JSON.parse(localStorage.getItem("currentUser"));
-   //console.log(user);
-   
+  //console.log(user);
+
   const handleLogout = () => {
     localStorage.removeItem("currentUser");
     navigate("/login");
@@ -33,6 +33,13 @@ function Navbar({ cartCount }) {
             🛒 Cart
             {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
           </Link>
+        </li>
+        <li className="wishlist-nav">
+          <span className="wishlist-icon">❤️</span>
+
+          <div className="wishlist-dropdown">
+            <Link to="/wishlist">View Wishlist</Link>
+          </div>
         </li>
 
         {user ? (

@@ -1,30 +1,52 @@
-function Categories({ setCategory }) {
-    return (
-      <section className="categories">
-        <h2>Categories</h2>
+function Categories({ setCategory, setSearch }) {
+  return (
+    <section className="categories">
+      <h2>Categories</h2>
 
-        <div className="category-list">
-          <button onClick={() => setCategory("All")}>
-            All
-            </button>
+      <div className="category-list">
+        <button
+          onClick={() => {
+            setSearch("");
+            setCategory("All");
+          }}
+        >
+          All
+        </button>{" "}
 
-          <button onClick={() => setCategory("Programming")}>
-            Programming
-          </button>
-
-          <button onClick={() => setCategory("Fiction")}>
-            Fiction
-          </button>
-
-          <button onClick={() => setCategory("Science")}>
-            Science
-          </button>
-
-          <button onClick={() => setCategory("History")}>
-            History
-          </button>
-        </div>
-      </section>
-    );
+        <button
+          onClick={() => {
+            setSearch("");
+            setCategory("Programming");
+          }}
+        >
+          Programming
+        </button>
+        <button
+          onClick={() => {
+            setSearch("");
+            setCategory("Fiction");
+          }}
+        >
+          Fiction
+        </button>
+        <button
+          onClick={() => {
+            setSearch("");
+            setCategory("Science");
+          }}
+        >
+          Science
+        </button>
+        <button
+          onClick={() => {
+            setSearch("");
+            setCategory("History");
+          }}
+        >
+          History
+        </button>{" "}
+      </div>
+    </section>
+  );
 }
 export { Categories };
