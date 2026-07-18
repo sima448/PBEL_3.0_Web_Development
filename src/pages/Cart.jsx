@@ -1,11 +1,17 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function Cart({ cart, setCart, removeFromCart, totalPrice }) {
   const navigate = useNavigate();
+  const [address, setAddress] = useState("");
 
   const handlePlaceOrder = async () => {
     try {
       const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (!address.trim()) {
+        alert("Please enter delivery address before placing order 📍");
+        return;
+      }
 
       const response = await fetch(
         "https://bookverse-backend-ti49.onrender.com/orders",
@@ -18,7 +24,7 @@ function Cart({ cart, setCart, removeFromCart, totalPrice }) {
             userEmail: currentUser.email,
             books: cart,
             totalPrice,
-            address: currentUser.address,
+            address,
           }),
         },
       );
@@ -86,11 +92,21 @@ function Cart({ cart, setCart, removeFromCart, totalPrice }) {
             <span>{cart.length}</span>
           </div>
 
-          <div>
-            <h3>Total: ₹{totalPrice}</h3>
-            <button onClick={handlePlaceOrder}>Place Order</button>
-          </div>
-        </div>
+             <div>
+                <h3>Total: ₹{totalPrice}</h3>
+
+                <input
+                  type="text"
+                  placeholder="Enter delivery address 📍"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  className="address-input"
+                />
+
+                <button onClick={handlePlaceOrder}>
+                  Place Order
+                </button>
+             </div>
       )}
     </div>
   );
