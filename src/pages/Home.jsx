@@ -19,12 +19,12 @@ function Home({
 }) {
   return (
     <>
-      <Hero />
       <SearchBox
         search={search}
         setSearch={setSearch}
         suggestions={filteredBooks}
       />
+      <Hero />
       <Categories
         category={category}
         setCategory={setCategory}

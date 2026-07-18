@@ -1,8 +1,113 @@
 .hero {
-  width:100%;
-  height:600px;
+  width: 100%;
+  height: 600px;
+
+  background-size: cover;
+  background-position: center;
+
+  position: relative;
 }
 
+.hero-overlay {
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.35);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+}
+
+.hero-content {
+  color: white;
+  max-width: 800px;
+  width: 100%;
+  padding: 20px;
+}
+
+
+.hero-content p {
+  font-size: 22px;
+  font-weight: 550;
+  margin-bottom: 30px;
+}
+
+.hero-content button {
+  padding: 14px 30px;
+  font-size: 18px;
+}
+
+
+.prev-btn,
+.next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background-color: transparent !important;
+  background: transparent !important;
+
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+
+  color: white !important;
+  font-size: 32px;
+
+  padding: 0;
+  margin: 0;
+
+  cursor: pointer;
+  z-index: 10;
+}
+
+.prev-btn {
+  left: 16px;
+}
+
+.next-btn {
+  right: 16px;
+}
+
+.prev-btn:hover,
+.next-btn:hover,
+.prev-btn:focus,
+.next-btn:focus {
+  background: transparent !important;
+  color: white !important;
+  box-shadow: none !important;
+}
+.prev-btn:hover,
+.next-btn:hover{
+  transform: translateY(-50%) scale(1.2);
+}
+
+.dots{
+  position: absolute;
+
+  bottom: 20px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 10px;
+
+  color: white;
+  font-size: 22px;
+
+  cursor: pointer;
+}
+.dots span{
+  font-size: 18px;
+  text-shadow: 0 0 8px rgba(0,0,0,0.8);
+}
+.dots span:hover{
+  transform: scale(1.2);
+}
 
 .hero-slide {
 
@@ -13,17 +118,21 @@
 
 }
 
+@media (max-width: 768px) {
+  .hero {
+    height: 450px;
+  }
 
-.slide1 {
+  .hero-content h1 {
+    font-size: 36px;
+  }
 
- background-image:url("../assets/banner1.jpg");
+  .hero-content p {
+    font-size: 16px;
+  }
 
-}
-.slide2 {
- background-image:url("../assets/banner2.jpg");
-}
-
-
-.slide3 {
- background-image:url("../assets/banner3.jpg");
+  .prev-btn,
+  .next-btn {
+    font-size: 24px;
+  }
 }

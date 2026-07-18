@@ -83,6 +83,24 @@ function Hero() {
           <button onClick={() => navigate("/books")}>Shop Now</button>
         </div>
       </div>
+      
+      <button
+        className="prev-btn"
+        onClick={() =>
+          setCurrent(current === 0 ? images.length - 1 : current - 1)
+        }
+      >
+        ❮
+      </button>
+
+      <button
+        className="next-btn"
+        onClick={() =>
+          setCurrent(current === images.length - 1 ? 0 : current + 1)
+        }
+      >
+        ❯
+      </button>
 
       <div className="dots">
         {images.map((_, index) => (
