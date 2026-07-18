@@ -61,7 +61,7 @@ body {
 }
 
 
-   .hero-content h1{
+  .hero-content h1{
   font-size: 72px;
   white-space: nowrap;
   transform: translateX(-90px);
@@ -115,7 +115,7 @@ body {
 }
 .categories h2 {
   text-align: center;
-  font-size: 32px;
+  font-size: 40px;
   font-weight: bold;
   margin-bottom: 20px;
   color: #2c3e50;
@@ -125,6 +125,9 @@ body {
 .category-list button {
   padding: 10px 15px;
   cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+
 }
 
 .featured-books {
@@ -135,6 +138,7 @@ body {
 
 .featured-books h2 {
   font-size: 40px;
+  font-weight: bold;
   color: #2c3e50;
   margin-bottom: 40px;
   position: relative;
@@ -143,38 +147,61 @@ body {
 .book-container {
   display: flex;
   justify-content: center;
-  gap: 20px;
   flex-wrap: wrap;
+  column-gap: 20px; /* same row me cards */
+  row-gap: 40px;    
 }
 
 .book-card{
   width: 250px;
   min-height: 500px;
 
+  background: white;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+
+  padding: 15px;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  transition: 0.3s;
+}
+.book-card:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
 }
 
 .book-card button {
-   padding: 10px;
-   cursor: pointer;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
 }
 .book-title {
   font-size: 36px;
   margin-bottom: 12px;
   color: #2c3e50;
 }
+
 .book-card h3 {
-  
+  margin: 4px 0 !important;
+  font-size: 25px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   line-clamp: 2;
   -webkit-line-clamp: 2;
+  
 }
+
+
 .author{
-  height: 40px;
+  margin: 0 !important;
+  height: auto !important;
+  font-size: 18px;
+  color: grey;
   overflow: hidden;
 }
 
@@ -338,15 +365,12 @@ h1 {
   color: inherit;
 }
 
-.author {
-    color: grey;
-    margin: 10px 0;
-}
 
 .rating {
   color: green;
   font-weight: bold;
   font-size: 18px;
+   margin: 2px 0 !important;
 
 }
 .price-section {
@@ -354,7 +378,7 @@ h1 {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin: 10px 0;
+ margin: 2px 0 !important;
 }
 .price{
   font-size: 28px;
@@ -570,11 +594,12 @@ h1 {
   display: flex;
   gap: 10px;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 5px !important;
 
 }
 
 .card-buttons button {
+  font-size: 13px;
   padding: 8px 12px;
 }
 
@@ -793,7 +818,7 @@ h1 {
   color: #2874f0;
   font-weight: bold;
 }
-
+/*
 .google-btn{
   width: 100%;
   padding: 12px;
@@ -813,7 +838,23 @@ h1 {
 .google-btn:hover{
   background: #1c5fd4;
 }
+*/
+.google-login-wrapper{
+  width: 100%;
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+}
 
+.google-login-wrapper > div{
+  width: 100% !important;
+  display: flex;
+  justify-content: center;
+}
+
+.google-login-wrapper iframe{
+  border-radius: 8px !important;
+}
 
 .auth-card button{
   width: 100%;
@@ -896,7 +937,6 @@ h1 {
 .logout-btn:hover{
   background:#c0392b;
 }
-
 
 .books-page h1 {
   text-align: center;
@@ -1565,44 +1605,6 @@ h1 {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .footer {
   background: #2c3e50;
   color: white;
@@ -1624,3 +1626,133 @@ h1 {
   margin-top: 15px;
 }
 
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+  .navbar{
+    padding: 12px 15px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-links{
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero-content h1{
+    font-size: 34px !important;
+    white-space: normal !important;
+    transform: none !important;
+    margin-bottom: 15px;
+  }
+
+  .hero-content p{
+    font-size: 16px;
+  }
+
+  .search-box{
+    width: 90%;
+  }
+
+  .featured-books h2,
+  .categories h2,
+  .related-books h2{
+    font-size: 28px;
+  }
+
+  .book-card{
+    width: 90%;
+    max-width: 300px;
+  }
+
+  .book-title-page{
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .details-image{
+    width: 220px;
+    height: 320px;
+  }
+
+  .details-info{
+    padding: 20px;
+  }
+
+  .details-buttons{
+    flex-direction: column;
+  }
+
+  .buy-btn,
+  .order-btn{
+    width: 100%;
+  }
+
+  .cart-page{
+    flex-direction: column;
+  }
+
+  .cart-item{
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cart-link{
+    flex-direction: column;
+  }
+
+  .cart-right{
+    position: static;
+  }
+
+  .wishlist-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .wishlist-card{
+    width: 95%;
+    max-width: 320px;
+  }
+
+  .order-card{
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .order-details-card{
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .order-details-left,
+  .order-details-right{
+    width: 100%;
+  }
+
+  .profile-card{
+    width: 95%;
+  }
+
+  .auth-card{
+    width: 95%;
+  }
+
+  .about-page h1{
+    font-size: 36px;
+  }
+
+  .about-card{
+    width: 100%;
+  }
+
+  .footer h3{
+    font-size: 22px;
+  }
+}

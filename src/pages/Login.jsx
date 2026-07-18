@@ -2,6 +2,8 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
 
 function Login() {
 
@@ -93,13 +95,31 @@ function Login() {
           Forgot Password?
         </p>
 
-        <button
-          className="google-btn"
-          onClick={() => alert("Google Login Coming Soon 🚀")}
-        >
-          <FcGoogle size={22} />
-          Continue with Google
-        </button>
+        <div className="google-login-wrapper">
+          <GoogleLogin
+            onSuccess={(credentialResponse) => {
+              const decoded = jwtDecode(credentialResponse.credential);
+
+              const user = {
+                name: decoded.name,
+                email: decoded.email,
+                picture: decoded.picture,
+              };
+
+              localStorage.setItem("currentUser", JSON.stringify(user));
+
+              alert("Google Login Successful ✅");
+              navigate("/profile");
+            }}
+            onError={() => {
+              alert("Google Login Failed ❌");
+            }}
+            theme="filled_blue"
+            size="large"
+            shape="rectangular"
+            width="330"
+          />
+        </div>
 
         <p>
           Don't have an account?
