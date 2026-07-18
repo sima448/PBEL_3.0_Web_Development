@@ -818,27 +818,6 @@ h1 {
   color: #2874f0;
   font-weight: bold;
 }
-/*
-.google-btn{
-  width: 100%;
-  padding: 12px;
-  margin-top: 12px;
-
-  background: white;
-  color: #333;
-
-  border: 1px solid #ddd;
-  border-radius: 6px;
-
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.google-btn:hover{
-  background: #1c5fd4;
-}
-*/
 .google-login-wrapper{
   width: 100%;
   margin-top: 12px;
@@ -1119,7 +1098,6 @@ h1 {
   border-color: skyblue;
 }
 
-/* ================= My Orders ================= */
 
 .orders-page {
   max-width: 1000px;
@@ -1178,9 +1156,6 @@ h1 {
   font-weight: bold;
 }
 
-
-/* ================= Order Details ================= */
-
 .order-details-page {
   max-width: 1100px;
   margin: 50px auto;
@@ -1195,7 +1170,6 @@ h1 {
 }
 
 
-/* Main horizontal card */
 
 .order-details-card {
   max-width: 950px;
@@ -1212,7 +1186,6 @@ h1 {
 
 
 
-/* Left Section */
 
 .order-details-left {
   width: 65%;
@@ -1235,7 +1208,7 @@ h1 {
 }
 
 
-/* Status */
+
 
 .order-status {
 
@@ -1247,11 +1220,11 @@ h1 {
 
 
 
-/* Items */
+
 
 .items-box {
-  margin: 25px auto;   /* center */
-  width: 80%;           /* box size */
+  margin: 25px auto;   
+  width: 80%;           
   background: #f8fafc;
   padding: 15px;
   border-radius: 12px;
@@ -1359,7 +1332,6 @@ h1 {
 }
 
 
-/* ================= Wishlist ================= */
 
 .wishlist-page {
   max-width: 1100px;
@@ -1375,7 +1347,6 @@ h1 {
 }
 
 
-/* Cards Container */
 .wishlist-page {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1384,13 +1355,11 @@ h1 {
 }
 
 
-/* Heading fix */
 .wishlist-page h1 {
   grid-column: 1 / -1;
 }
 
 
-/* Wishlist Card */
 
 .wishlist-card {
   width: 300px;
@@ -1407,7 +1376,6 @@ h1 {
 }
 
 
-/* Image */
 
 .wishlist-card img {
   width:180px;
@@ -1440,7 +1408,6 @@ h1 {
 }
 
 
-/* Buttons */
 
 .wishlist-card button {
   width:180px;
@@ -1473,7 +1440,6 @@ h1 {
 }
 
 
-/* Continue Shopping */
 
 .wishlist-page > a {
   grid-column:1 / -1;
@@ -1626,7 +1592,6 @@ h1 {
   margin-top: 15px;
 }
 
-/* ================= MOBILE RESPONSIVE ================= */
 
 @media (max-width: 768px) {
 
