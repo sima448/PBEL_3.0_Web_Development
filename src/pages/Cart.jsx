@@ -8,6 +8,7 @@ function Cart({ cart, setCart, removeFromCart, totalPrice }) {
   const handlePlaceOrder = async () => {
     try {
       const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
       if (!address.trim()) {
         alert("Please enter delivery address before placing order 📍");
         return;
@@ -35,6 +36,7 @@ function Cart({ cart, setCart, removeFromCart, totalPrice }) {
         alert(data.message);
         return;
       }
+
       alert("🎉 Order Placed Successfully");
 
       localStorage.removeItem("cart");
@@ -55,7 +57,7 @@ function Cart({ cart, setCart, removeFromCart, totalPrice }) {
 
         {cart.length === 0 ? (
           <div className="empty-cart-container">
-            <h2 className="empty-cart"> 🛒 Your cart is empty!</h2>
+            <h2 className="empty-cart">🛒 Your cart is empty!</h2>
 
             <Link to="/">
               <button className="shop-btn">Shop Now</button>
@@ -92,21 +94,18 @@ function Cart({ cart, setCart, removeFromCart, totalPrice }) {
             <span>{cart.length}</span>
           </div>
 
-             <div>
-                <h3>Total: ₹{totalPrice}</h3>
+          <h3>Total: ₹{totalPrice}</h3>
 
-                <input
-                  type="text"
-                  placeholder="Enter delivery address 📍"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                  className="address-input"
-                />
+          <input
+            type="text"
+            placeholder="Enter delivery address 📍"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            className="address-input"
+          />
 
-                <button onClick={handlePlaceOrder}>
-                  Place Order
-                </button>
-             </div>
+          <button onClick={handlePlaceOrder}>Place Order</button>
+        </div>
       )}
     </div>
   );
