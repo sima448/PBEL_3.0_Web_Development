@@ -7,18 +7,21 @@ function Cart({ cart, setCart, removeFromCart, totalPrice }) {
     try {
       const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-      const response = await fetch("http://localhost:5000/orders", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://bookverse-backend-ti49.onrender.com/orders",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userEmail: currentUser.email,
+            books: cart,
+            totalPrice,
+            address: currentUser.address,
+          }),
         },
-        body: JSON.stringify({
-          userEmail: currentUser.email,
-          books: cart,
-          totalPrice,
-          address: currentUser.address,
-        }),
-      });
+      );
 
       const data = await response.json();
 

@@ -2,7 +2,6 @@ import { Hero } from "../components/Hero";
 import { SearchBox } from "../components/SearchBox";
 import { Categories } from "../components/Categories";
 import { BookCard } from "../components/BookCard";
-//import { useEffect, useState } from "react";
 
 
 

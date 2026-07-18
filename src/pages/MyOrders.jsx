@@ -8,7 +8,9 @@ function MyOrders() {
   useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-    fetch(`http://localhost:5000/orders/${currentUser.email}`)
+    fetch(
+      `https://bookverse-backend-ti49.onrender.com/orders/${currentUser.email}`,
+    )
       .then((res) => res.json())
       .then((data) => setOrders(data))
       .catch((err) => console.log(err));
@@ -22,7 +24,7 @@ function MyOrders() {
     if (!confirmDelete) return;
 
     try {
-      await fetch(`http://localhost:5000/order/${id}`, {
+      await fetch(`https://bookverse-backend-ti49.onrender.com/order/${id}`, {
         method: "DELETE",
       });
 

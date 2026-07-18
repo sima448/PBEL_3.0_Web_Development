@@ -24,17 +24,20 @@ function Signup() {
       }
 
       try {
-        const response = await fetch("http://localhost:5000/signup", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
+        const response = await fetch(
+          "https://bookverse-backend-ti49.onrender.com/signup",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              name,
+              email,
+              password,
+            }),
           },
-          body: JSON.stringify({
-            name,
-            email,
-            password,
-          }),
-        });
+        );
 
         const data = await response.json();
 

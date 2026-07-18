@@ -7,7 +7,7 @@ function OrderDetails() {
   const [order, setOrder] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/order/${id}`)
+    fetch(`https://bookverse-backend-ti49.onrender.com/order/${id}`)
       .then((res) => res.json())
       .then((data) => setOrder(data))
       .catch((err) => console.log(err));
@@ -40,9 +40,12 @@ function OrderDetails() {
    if (!confirmCancel) return;
 
    try {
-     const response = await fetch(`http://localhost:5000/order/${order._id}`, {
-       method: "DELETE",
-     });
+     const response = await fetch(
+       `https://bookverse-backend-ti49.onrender.com/order/${order._id}`,
+       {
+         method: "DELETE",
+       },
+     );
 
      const data = await response.json();
 
