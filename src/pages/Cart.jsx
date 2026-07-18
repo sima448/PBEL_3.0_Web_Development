@@ -1,16 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 function Cart({ cart, setCart, removeFromCart, totalPrice }) {
   const navigate = useNavigate();
-  const [address, setAddress] = useState("");
 
   const handlePlaceOrder = async () => {
     try {
       const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-      if (!address.trim()) {
-        alert("Please enter delivery address before placing order 📍");
+      if (!currentUser.address) {
+        alert("Please add delivery address in your profile first 📍");
+        navigate("/profile");
         return;
       }
 
@@ -25,7 +24,7 @@ function Cart({ cart, setCart, removeFromCart, totalPrice }) {
             userEmail: currentUser.email,
             books: cart,
             totalPrice,
-            address,
+            address: currentUser.address,
           }),
         },
       );
@@ -95,14 +94,6 @@ function Cart({ cart, setCart, removeFromCart, totalPrice }) {
           </div>
 
           <h3>Total: ₹{totalPrice}</h3>
-
-          <input
-            type="text"
-            placeholder="Enter delivery address 📍"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            className="address-input"
-          />
 
           <button onClick={handlePlaceOrder}>Place Order</button>
         </div>
