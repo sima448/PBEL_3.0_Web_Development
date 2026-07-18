@@ -4,6 +4,12 @@ import nodejsBook from "../assets/Nodejs_Mastery.jpg";
 import pythonBook from "../assets/Python_Essentials.jpg";
 import htmlCssBook from "../assets/HTML_CSS.jpg";
 import mongodbBook from "../assets/Learning_MongoDB.jpg";
+import alchemistBook from "../assets/The_Alchemist.jpg";
+import harryPotterBook from "../assets/Harry_Potter.jpg";
+import worldHistoryBook from "../assets/World_History.jpg";
+import ancientIndiaBook from "../assets/Ancient_India.jpg";
+import briefHistoryBook from "../assets/Brief_History_of_Time.jpg";
+import cosmosBook from "../assets/Cosmos.jpg";
 
 
 
@@ -92,7 +98,7 @@ const books = [
     id: 7,
     title: "The Alchemist",
     author: "Paulo Coelho",
-    image: reactBook,
+    image: alchemistBook,
     category: "Fiction",
     price: "₹399",
     oldPrice: "₹899",
@@ -104,7 +110,7 @@ const books = [
     id: 8,
     title: "Harry Potter",
     author: "J.K. Rowling",
-    image: reactBook,
+    image: harryPotterBook,
     category: "Fiction",
     price: "₹599",
     oldPrice: "₹1299",
@@ -116,7 +122,7 @@ const books = [
     id: 9,
     title: "World History",
     author: "Philip Parker",
-    image: javascriptBook,
+    image: worldHistoryBook,
     category: "History",
     price: "₹699",
     oldPrice: "₹1499",
@@ -127,8 +133,8 @@ const books = [
   {
     id: 10,
     title: "Ancient India",
-    author: "R.S. Sharma",
-    image: javascriptBook,
+    author: "R.C. Majumdar",
+    image: ancientIndiaBook,
     category: "History",
     price: "₹499",
     oldPrice: "₹999",
@@ -140,7 +146,7 @@ const books = [
     id: 11,
     title: "A Brief History of Time",
     author: "Stephen Hawking",
-    image: pythonBook,
+    image: briefHistoryBook,
     category: "Science",
     price: "₹799",
     oldPrice: "₹1599",
@@ -152,7 +158,7 @@ const books = [
     id: 12,
     title: "Cosmos",
     author: "Carl Sagan",
-    image: pythonBook,
+    image: cosmosBook,
     category: "Science",
     price: "₹699",
     oldPrice: "₹1399",
